@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, cleanup, fireEvent } from '@testing-library/react';
+import { render, cleanup, screen, fireEvent, waitFor } from '@testing-library/react';
 import App from './App';
 
 describe('App component', () => {
@@ -12,6 +12,18 @@ describe('App component', () => {
   });
 
   it('sets the color to blue', () => {
+    render(<App/>);
 
+    const colorPicker = screen.getByLabelText('color:');
+
+    fireEvent.change(colorPicker, {
+      target: {
+        value: '#00FF00'
+      }
+    });
+
+    waitFor(() => {
+      expect(colorPicker).toHaveValue('#00FF00');
+    });
   });
 });
