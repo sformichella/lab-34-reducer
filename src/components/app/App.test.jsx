@@ -11,7 +11,7 @@ describe('App component', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it('sets the color to blue', () => {
+  it('sets the color to green', () => {
     render(<App/>);
 
     const colorPicker = screen.getByLabelText('color:');
