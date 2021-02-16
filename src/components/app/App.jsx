@@ -37,7 +37,9 @@ function App() {
     <>
       <button onClick={undo}>undo</button>
       <button onClick={redo}>redo</button>
+      <label htmlFor="color-picker">color: </label>
       <input
+        id="color-picker"
         type="color"
         value={current}
         onChange={({ target }) => record(target.value)}
