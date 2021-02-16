@@ -1,5 +1,11 @@
 import React from 'react';
-import { render, cleanup, screen, fireEvent, waitFor } from '@testing-library/react';
+import {
+  render,
+  cleanup,
+  screen,
+  fireEvent,
+  waitFor 
+} from '@testing-library/react';
 import App from './App';
 
 describe('App component', () => {
@@ -11,19 +17,21 @@ describe('App component', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it('sets the color to green', () => {
+  it('sets the color to green', async() => {
     render(<App/>);
 
-    const colorPicker = screen.getByLabelText('color:');
+    const colorPicker = await screen.getByLabelText('color:');
+    const colorBox = await screen.findByTestId('color-box');
 
     fireEvent.change(colorPicker, {
       target: {
-        value: '#00FF00'
+        value: '#00ff00'
       }
     });
 
-    waitFor(() => {
-      expect(colorPicker).toHaveValue('#00FF00');
+    return waitFor(() => {
+      expect(colorPicker).toHaveValue('#00ff00');
+      expect(colorBox.style.backgroundColor).toBe('rgb(0, 255, 0)');
     });
   });
 });

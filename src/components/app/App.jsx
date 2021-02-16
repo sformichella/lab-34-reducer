@@ -45,6 +45,7 @@ function App() {
         onChange={({ target }) => record(target.value)}
       />
       <div
+        data-testid="color-box"
         style={{ backgroundColor: current, width: '10rem', height: '10rem' }}
       ></div>
     </>

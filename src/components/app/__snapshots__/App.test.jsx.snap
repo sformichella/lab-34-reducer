@@ -19,6 +19,7 @@ exports[`App component renders App 1`] = `
     value="#FF0000"
   />
   <div
+    data-testid="color-box"
     style="background-color: rgb(255, 0, 0); width: 10rem; height: 10rem;"
   />
 </DocumentFragment>
