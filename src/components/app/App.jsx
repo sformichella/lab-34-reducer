@@ -1,41 +1,12 @@
 import React, { useReducer } from 'react';
 
-// const useRecord = (init) => {
-//   const [before, setBefore] = useState([]);
-//   const [current, setCurrent] = useState(init);
-//   const [after, setAfter] = useState([]);
-
-//   const undo = () => {
-//     setAfter(after => [current, ...after]);
-//     setCurrent(before[before.length - 1]);
-//     setBefore(before => before.slice(0, -1));
-//   };
-
-//   const redo = () => {
-//     setBefore(before => [...before, current]);
-//     setCurrent(after[0]);
-//     setAfter(after => after.slice(1));
-//   };
-
-//   const record = val => {
-//     setBefore(before => [...before, current]);
-//     setCurrent(val);
-//   };
-
-//   return {
-//     undo,
-//     record,
-//     redo,
-//     current,
-//   };
-// };
 const initialState = {
   color: '#ff0000',
   before: [],
   after: []
 };
 
-function reducer(state, action) {
+const reducer = (state, action) => {
   switch(action.type) {
     case 'COLOR_CHANGE': {
       const before = [...state.before, state.color];
@@ -54,10 +25,9 @@ function reducer(state, action) {
     default:
       return state;
   }
-}
+};
 
-function App() {
-  // const { current, undo, redo, record } = useRecord('#FF0000');
+const App = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const record = ({ target }) => {
@@ -100,6 +70,6 @@ function App() {
       ></div>
     </>
   );
-}
+};
 
 export default App;
