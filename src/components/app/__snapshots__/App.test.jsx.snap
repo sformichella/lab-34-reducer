@@ -2,25 +2,19 @@
 
 exports[`App component renders App 1`] = `
 <DocumentFragment>
-  <button>
-    undo
-  </button>
-  <button>
-    redo
-  </button>
   <label
-    for="color-picker"
+    for="COLOR_CHANGE"
   >
     color: 
   </label>
   <input
-    id="color-picker"
+    id="COLOR_CHANGE"
     type="color"
-    value="#FF0000"
+    value="red"
   />
   <div
     data-testid="color-box"
-    style="background-color: rgb(255, 0, 0); width: 10rem; height: 10rem;"
+    style="background-color: red; width: 10rem; height: 10rem;"
   />
 </DocumentFragment>
 `;
