@@ -55,4 +55,27 @@ describe('App component', () => {
       expect(colorBox.style.backgroundColor).toBe('rgb(255, 0, 0)');
     });
   });
+
+  it('redoes setting the color to green', async() => {
+    render(<App/>);
+
+    const colorPicker = await screen.findByLabelText('color:');
+    const colorBox = await screen.findByTestId('color-box');
+    const undo = await screen.findByText('undo');
+    const redo = await screen.findByText('redo');
+
+    fireEvent.change(colorPicker, {
+      target: {
+        value: '#00ff00'
+      }
+    });
+
+    fireEvent.click(undo);
+    fireEvent.click(redo);
+
+    return waitFor(() => {
+      expect(colorPicker).toHaveValue('#00ff00');
+      expect(colorBox.style.backgroundColor).toBe('rgb(0, 255, 0)');
+    });
+  });
 });
