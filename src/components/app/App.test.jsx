@@ -30,7 +30,6 @@ describe('App component', () => {
     });
 
     return waitFor(() => {
-      expect(colorPicker).toHaveValue('#00ff00');
       expect(colorBox.style.backgroundColor).toBe('rgb(0, 255, 0)');
     });
   });
@@ -51,7 +50,6 @@ describe('App component', () => {
     fireEvent.click(undo);
 
     return waitFor(() => {
-      expect(colorPicker).toHaveValue('#ff0000');
       expect(colorBox.style.backgroundColor).toBe('rgb(255, 0, 0)');
     });
   });
@@ -74,7 +72,6 @@ describe('App component', () => {
     fireEvent.click(redo);
 
     return waitFor(() => {
-      expect(colorPicker).toHaveValue('#00ff00');
       expect(colorBox.style.backgroundColor).toBe('rgb(0, 255, 0)');
     });
   });
