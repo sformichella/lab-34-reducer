@@ -7,6 +7,11 @@ exports[`App component renders App 1`] = `
   >
     undo
   </button>
+  <button
+    id="COLOR_REDO"
+  >
+    redo
+  </button>
   <label
     for="COLOR_CHANGE"
   >

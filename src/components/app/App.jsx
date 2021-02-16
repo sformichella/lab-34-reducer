@@ -46,8 +46,11 @@ function reducer(state, action) {
       const after = [state.color, ...state.after];
       return { color: state.before.slice(-1)[0], before, after };
     }
-    case 'COLOR_REDO':
-      return;
+    case 'COLOR_REDO': {
+      const before = [...state.before, state.color];
+      const after = state.after.slice(1);
+      return { color: state.after[0], before, after };
+    }
     default:
       return state;
   }
@@ -70,10 +73,16 @@ function App() {
     });
   };
 
+  const redo = ({ target }) => {
+    dispatch({
+      type: target.id
+    });
+  };
+
   return (
     <>
       <button onClick={undo} id="COLOR_UNDO">undo</button>
-      {/* <button onClick={redo}>redo</button> */}
+      <button onClick={redo} id="COLOR_REDO">redo</button>
       <label htmlFor="COLOR_CHANGE">color: </label>
       <input
         id="COLOR_CHANGE"
